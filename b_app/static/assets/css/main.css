@@ -2181,3 +2181,43 @@ body.is-preload #wrapper {
 			}
 
 		}
+
+.about-me-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-me-image-container {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.about-me-image {
+    width: 100%;
+    max-width: 300px; /* Adjust the width to your preference */
+    height: auto;
+    display: block;
+}
+
+.about-me-text {
+    flex: 1;
+    max-width: calc(100% - 340px); /* Account for the image width + margin */
+}
+
+@media screen and (max-width: 768px) {
+    .about-me-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-me-image-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .about-me-text {
+        max-width: 100%;
+    }
+}
