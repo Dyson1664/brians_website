@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Message Sent</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}"></noscript>
+    <style>
+        .success-message {
+<!--            color: green;-->
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        .button {
+            display: inline-block;
+            padding: 0.7em 1.5em;
+            margin: 0.5em 0;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .button:active {
+            background-color: #444;
+        }
+        #main {
+            padding: 3em 1.5em;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <!-- Sent -->
+            <article id="sent" class="panel">
+                <header>
+                    <h2>Thank you!</h2>
+                </header>
+                <div class="success-message">
+                    {% if messages %}
+                        {% with displayed=False %}
+                            {% for message in messages %}
+                                {% if message.tags == 'success' and not displayed %}
+                                    <p>{{ message|safe }}</p>
+                                    {% with displayed=True %}
+                                    {% endwith %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    {% endif %}
+                    <a href="{% url 'index' %}" class="button">Return to Homepage</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Footer -->
+        <div id="footer">
+            <ul class="copyright">
+                <!-- <li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li> -->
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

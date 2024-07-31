@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-f@$h1!v3zl93*&*%oh8slfj8kj#0@m=jbe*4e)i9jkoe-uq&db'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-f@$h1!v3zl93*&*%oh8slfj8kj#0@m=jbe*4e)i9jkoe-uq&db'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -120,6 +120,56 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
+EMAIL_PORT = 587  # Typically 587 for TLS or 465 for SSL
+EMAIL_USE_TLS = True  # Use TLS (set to False if using SSL)
+EMAIL_HOST_USER = 'dave.reilly@cec.com.vn'  # Your email address
+EMAIL_HOST_PASSWORD = 'cec.com.vn'  # Your email password
+DEFAULT_FROM_EMAIL = 'dave.reilly@cec.com.vn'  # Default 'from' email address
+CONTACT_EMAIL = 'dave.reilly@cec.com.vn'  # The email address to receive messages
+
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'error',
+}
+
+import os
+import logging
+
+# Configure logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+    'django': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+        'propagate': True,
+    },
+    'myapp': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+        'propagate': True,
+    },
+}
+
+logger = logging.getLogger(__name__)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

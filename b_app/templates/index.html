@@ -151,33 +151,79 @@
             </article>
 
 
-            <!-- Contact -->
-            <article id="contact" class="panel">
-                <header>
-                    <h2>Contact Me</h2>
-                </header>
-                <form action="#" method="post">
-                    <div>
-                        <div class="row">
-                            <div class="col-6 col-12-medium">
-                                <input type="text" name="name" placeholder="Name" />
-                            </div>
-                            <div class="col-6 col-12-medium">
-                                <input type="text" name="email" placeholder="Email" />
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="subject" placeholder="Subject" />
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" placeholder="Message" rows="6"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <input type="submit" value="Send Message" />
-                            </div>
-                        </div>
+                    <!-- Contact -->
+        <article id="contact" class="panel">
+            <header>
+                <h2>Contact Me</h2>
+            </header>
+                <form action="{% url 'index' %}#contact" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-6 col-12-medium">
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                            <ul class="error-list">
+                                {% for error in form.name.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
-                </form>
-            </article>
+                    <div class="col-6 col-12-medium">
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <ul class="error-list">
+                                {% for error in form.email.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        {{ form.confirm_email }}
+                        {% if form.confirm_email.errors %}
+                            <ul class="error-list">
+                                {% for error in form.confirm_email.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-12">
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <ul class="error-list">
+                                {% for error in form.subject.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-12">
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <ul class="error-list">
+                                {% for error in form.message.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Send Message" />
+                    </div>
+                    <div class="col-12">
+                        {% if form.non_field_errors %}
+                            <ul class="error-list">
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </article>
 
         </div>
 
