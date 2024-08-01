@@ -24,7 +24,7 @@ def index(request):
                     subject,
                     full_message,
                     email,  # Sender's email
-                    ['dave.reilly@cec.com.vn'],  # Your email
+                    ['brianreillyhealth@gmail.com'],  # Your email
                     headers={'Reply-To': email}  # Set reply-to to the sender's email
                 )
                 email_message.send(fail_silently=False)
