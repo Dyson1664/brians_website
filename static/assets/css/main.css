@@ -1305,7 +1305,7 @@ input, select, textarea {
 	}
 
 	body {
-		background-image: url("images/overlay.png"), url("images/bg.jpg");
+		background-image: url("images/overlay.png"), url("images/yes.jpg");
 		background-repeat: repeat, no-repeat;
 		background-size: auto, 100% 100%;
 		background-attachment: fixed;
@@ -1398,6 +1398,8 @@ input, select, textarea {
 		}
 
 	}
+
+
 
 	blockquote {
 		border-left: solid 0.5em #ddd;
@@ -2221,3 +2223,21 @@ body.is-preload #wrapper {
         max-width: 100%;
     }
 }
+
+        /* Adjust navbar icons for mobile screens */
+    @media screen and (max-width: 736px) {
+        #nav a {
+            font-size: 2em; /* Reduce icon size */
+            margin: 0 0.15em; /* Reduce spacing between icons */
+            width: 0.9em; /* Adjust width to fit better */
+        }
+
+        #nav {
+            height: auto; /* Allow the navbar to expand in height */
+            padding-bottom: 1em; /* Add some padding to the bottom */
+        }
+
+        #nav a span {
+            display: none; /* Hide text labels on mobile to save space */
+        }
+    }
