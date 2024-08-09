@@ -2241,3 +2241,13 @@ body.is-preload #wrapper {
             display: none; /* Hide text labels on mobile to save space */
         }
     }
+
+a {
+    color: #222222; /* Darker shade of light black */
+    text-decoration: underline; /* Keeps the underline */
+}
+
+a:hover {
+    color: #000000; /* Pure black on hover */
+    text-decoration: underline; /* Keeps the underline on hover */
+}
