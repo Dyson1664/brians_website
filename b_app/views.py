@@ -1,8 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from .forms import ContactForm
 import logging
+
+try:
+    import stripe
+except ImportError:
+    stripe = None
+from django.conf import settings
+from django.shortcuts import redirect
+from django.views import View
+from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
@@ -46,3 +55,34 @@ def index(request):
 
 def sent(request):
     return render(request, 'sent.html')
+
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class CreateCheckoutSessionView(View):
+    def post(self, request, *args, **kwargs):
+        YOUR_DOMAIN = "http://127.0.0.1:8000"  # Adjust based on your domain
+
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        'price_data': {
+                            'currency': 'eur',
+                            'product_data': {
+                                'name': 'call',
+                            },
+                            'unit_amount': 2000,  # 20.00 USD
+                        },
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                success_url=YOUR_DOMAIN + '/success/',
+                cancel_url=YOUR_DOMAIN + '/cancel/',
+            )
+            return redirect(checkout_session.url, code=303)
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
+

@@ -21,8 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-f@$h1!v3zl93*&*%oh8slfj8kj#0@m=jbe*4e)i9jkoe-uq&db'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-f@$h1!v3zl93*&*%oh8slfj8kj#0@m=jbe*4e)i9jkoe-uq&db'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Psh4fEKsLqqL6agM7aDF8SWTqnAfFW15j5eWiIWEPBzggocsGXqZ5vLrWnRLNAPOUM0eKkCfFYSuFcE8g4ubo9i00otFMqEx1'
+STRIPE_SECRET_KEY = 'sk_test_51Psh4fEKsLqqL6ag4iJGjDPqymqk3450xsvhw0jb4Py4uwYnwWiiNeHgvQnhGyAyOZKsoByBzio3vvIad5gwdaiZ00ArRlOQiN'       # Replace with your own Secret Key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -37,10 +40,10 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 # Add your custom domains
-ALLOWED_HOSTS.extend([
-    'brianreillyhealth.ie',
-    'www.brianreillyhealth.ie',
-])
+# ALLOWED_HOSTS.extend([
+#     'brianreillyhealth.ie',
+#     'www.brianreillyhealth.ie',
+# ])
 
 
 INSTALLED_APPS = [
