@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-f@$h1!v3zl93*&*%oh8slfj8kj#0@m=jbe*4e)i9jkoe-uq&db'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY=os.environ.get('SECRET_KEY')
+
+STRIPE_PUBLISHABLE_KEY=os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY=os.environ.get('STRIPE_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -38,10 +42,10 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 # Add your custom domains
-ALLOWED_HOSTS.extend([
-    'brianreillyhealth.ie',
-    'www.brianreillyhealth.ie',
-])
+# ALLOWED_HOSTS.extend([
+#     'brianreillyhealth.ie',
+#     'www.brianreillyhealth.ie',
+# ])
 
 
 INSTALLED_APPS = [
