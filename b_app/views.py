@@ -3,11 +3,8 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from .forms import ContactForm
 import logging
+import stripe
 
-try:
-    import stripe
-except ImportError:
-    stripe = None
 from django.conf import settings
 from django.shortcuts import redirect
 from django.views import View

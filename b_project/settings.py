@@ -42,10 +42,10 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 # Add your custom domains
-ALLOWED_HOSTS.extend([
-    'brianreillyhealth.ie',
-    'www.brianreillyhealth.ie',
-])
+# ALLOWED_HOSTS.extend([
+#     'brianreillyhealth.ie',
+#     'www.brianreillyhealth.ie',
+# ])
 
 
 INSTALLED_APPS = [
