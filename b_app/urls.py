@@ -23,7 +23,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', views.index, name='index'),
     path('sent/', views.sent, name='sent'),
-    path('create-checkout-session/', views.CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
+    # path('create-checkout-session/', views.CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
     path('success/', TemplateView.as_view(template_name="success.html"), name='success'),
     path('cancel/', TemplateView.as_view(template_name="cancel.html"), name='cancel')
 
